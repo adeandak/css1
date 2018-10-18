@@ -15,10 +15,9 @@
 html {
 	font-family: "Lucida Sans", sans-serif;
 	height: 100%;
-	margin: 1px;
+	margin: 0;
 	padding: 0;
 	border:0;
-    background-color: #FCF3CF;
 }
 
 body{
@@ -31,12 +30,17 @@ body{
     box-sizing: border-box;
 }
 
-.button{
-	background-color: #CFD0E1;
-	color: #fff;
-	padding:20px 30px;
-	border:none;
-    margin: 7px;
+button{
+    background-color: orangered;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 .col{
@@ -49,11 +53,12 @@ body{
     display: table;
 }
 #header{
+    z-index: 1999;
     position:fixed;
     height:70px;
     width:100%;
     margin: 0px;
-    background-color:rgb(243, 95, 9);
+    background-color:blue;
 }
 
 .nav{
@@ -72,7 +77,7 @@ body{
 .list li{
     display: inline;
 	margin:5px;
-	padding: 0; 
+    padding: 0; 
 }
 
 .text{
@@ -101,14 +106,52 @@ img{
     text-shadow: 3px, 2px, #EBEDEF;
 }
 
-.info{
+#info{
     text-align: justify;
-    font:Trattatello, fantasy;
+    font-family: "Impact", Charcoal, sans-serif;
+    box-shadow: 10px 10px 5px grey;
 
 }
 
 .actividades{
     padding: 5px;
     text-align: center;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    box-shadow: inset 0 0 5px 2px #282a2d;
+}
 
+.actividades h1{
+    color:white;
+    margin: 10px;
+    font-family: "Lucida Console", Monaco, monospace;
+
+}
+.recursos{
+    background-image: url("./imagenes/img1.jpg");
+    
+}
+
+.mini{
+    background-image: url("./imagenes/img2.jpg");
+}
+
+.curso{
+    background-image: url("./imagenes/img3.jpg");
+}
+
+.mueganos{
+    background-image: url("./imagenes/img4.jpg");
+    background-position: left;
+}
+
+.brigada{
+    background-image: url("./imagenes/img5.jpg");
+}
+
+.ciss{
+    background-image: url("./imagenes/img6.jpg");
 }
