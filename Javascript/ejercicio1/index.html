@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Ejercicio1</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Ejercicio 1</h1>
+    </div>
+    <div class="box">
+        <h5>Base de la piramide:</h5>
+        <input id="myText" type="text">
+        <button onclick="aux()" id="button">Aceptar</button>
+    </div>
+    <div class="piramide"></div>
+
+    <!--El script va hasta abajo-->
+    <script>
+        function myFunction(){
+            var aux;
+            var n = document.getElementsById("muText");
+            try{
+                for(var i=0; i<n; i++){
+                    for(var j=1; j<n-1; j++){
+                        aux=aux+ '/t';
+                    }
+                }
+                document.getElementsByClassName("piramide").innerHTML=aux;
+            }catch(err){
+                document.getElementsByClassName("piramide").innerHTML="Error /t"+ err;
+            }
+        }
+
+        function aux(){
+            document.getElementsByClassName("piramide").innerHTML="hola";
+            
+        }
+    </script>
+</body>
+</html>
