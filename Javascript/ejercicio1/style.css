@@ -36,3 +36,9 @@ button{
     display: inline-block;
     font-size: 15px;
 }
+
+.piramide{
+    text-align: center;
+    font-family: Impact, Charcoal, sans-serif;
+    transform: rotate(180deg);
+}
