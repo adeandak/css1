@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Ejercicio2</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Ejercicio 2</h1>
+    </div>
+    <div class="box1">
+        <h3>Da click en el boton para generar un id:</h3>
+        <button onclick="myFunction()" id="button">Aceptar</button>
+    </div>
+    <div class="aux"></div>
+
+    <!--El script va hasta abajo-->
+    <script> 
+
+        function removeElement(elementId) {
+            // Removes an element from the document
+            console.log(elementId);
+            var element = document.getElementById(elementId);
+            element.parentNode.removeChild(element);
+            console.log("diste click en eliminar");
+        }
+
+        function myFunction(){
+            console.log("diste click en aceptar");
+            //crear un div 
+            var myDiv = document.createElement("div");
+            //crear el boton con una variable para div.
+            var btn = document.createElement("button");
+            var t = document.createTextNode("X");
+            btn.appendChild(t);
+            //agregar la imagen
+            var img = document.createElement("img");
+            img.setAttribute("src", "./imagen.jpg");
+            img.setAttribute("width", "100%");
+            //generar id
+            var uniqueId = 'id-' + Math.random().toString(36).substr(2, 16);
+            var id= document.createTextNode(uniqueId);
+            console.log(id);
+            console.log(uniqueId);
+            console.log(typeof(id))
+            console.log(typeof(uniqueId))
+            //linebreak
+            var linebreak = document.createElement("br");
+            //darle formato al div 
+            myDiv.appendChild(id);
+            myDiv.appendChild(linebreak);
+            myDiv.appendChild(img);
+            myDiv.appendChild(linebreak);
+            myDiv.appendChild(btn);
+            
+            myDiv.id=uniqueId;
+            //darle formato al div
+            myDiv.style.width="300px";
+            myDiv.style.display="block";
+            myDiv.style.textAlign="center";
+            document.getElementsByClassName("aux")[0].appendChild(myDiv);   
+            //para el click del boton
+
+
+            btn.addEventListener("click", removeElement.bind(this, uniqueId));       
+        }  
+        //btn.setAttribute("whenClicked",removeElement(id));
+
+    
+    </script>
+</body>
+</html>

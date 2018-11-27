@@ -21,18 +21,18 @@
     <!--El script va hasta abajo-->
     <script>
         function myFunction(){
-            var aux=0;
+            var aux="";
             var n = document.getElementById("myText").value;
-            console.log("El valor de n es de: " + n);        
+            //console.log("El valor de n es de: " + n);        
             
             for(var i=1; i<=n; i++){
-                console.log(i);
+                //console.log(i);
                 for(var j=1; j<=i; j++){
-                    aux=0+aux;
-                    console.log(aux);
+                    aux="0"+aux;
+                    //console.log(aux);
                 }
                 aux='</br>'+aux;
-                console.log(aux);
+                //console.log(aux);
             }
             document.getElementsByClassName("piramide")[0].innerHTML=aux;
         }
