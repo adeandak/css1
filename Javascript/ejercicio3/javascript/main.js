@@ -16,16 +16,12 @@ request.onload = function () {
     var option;
     var idiomas = Object.keys(data);
     
-
     idiomas.forEach(elem => {
-      console.log(elem);
-      console.log(typeof (elem));
-      //option.text(elem);
-      console.log(option);
-      selectIdiomas.appendChild(option);
-    
+      var selectIdiomas = document.getElementById("idiomas");
+      var option = document.createElement("option");
+      option.text = elem;
+      selectIdiomas.add(option,selectIdiomas[0]);
     })
-    //console.log(idiomas);
   } else
     console.log('error');
   
