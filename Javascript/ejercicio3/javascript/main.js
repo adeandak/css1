@@ -47,7 +47,7 @@ function myFunction() {
 }
 
 function crearDiv(txt){
-  var desc;
+  var desc, tot;
   console.log(txt);
 
   //console.log(arrayIdiomas);
@@ -63,8 +63,11 @@ function crearDiv(txt){
   myDiv.innerHTML="Idioma: "+txt+"<br>"+"Precio:  "+ idioma.precio+"<br>"+"Profesor:  "+ idioma.profesor+"<br>"+ "Descuento:  "+ idioma.descuento +"<br>"+ "Niveles:  ";
 
   var sel = document.createElement("select");
+  sel.id=txt;
   llenarNiveles(sel, idioma.niveles);
+  sel.setAttribute("onchange", cambioNivel.bind(this, sel));
 
+  //console.log(sel.id);
 
   //generar id
   var uniqueId = 'id-' + Math.random().toString(36).substr(2, 16)+txt;
@@ -83,9 +86,15 @@ function crearDiv(txt){
   document.getElementsByClassName("aux")[0].appendChild(myDiv);   
   //para el click del boton   
 
-  
-  costo+= ((Number.parseInt(idioma.precio))*desc)/100;
+  tot=((Number.parseInt(idioma.precio))*desc)/100;
+  costo+= tot;
   //console.log(costo);
+  niveles.push({
+    idioma: txt,
+    total: tot,
+    nivel: sel.options[sel.selectedIndex].text
+  });
+  //console.log(niveles);
 }  
 
 function llenarNiveles(select, array){
@@ -97,6 +106,11 @@ function llenarNiveles(select, array){
     select.add(option,select[a.length]);
   }
 
+}
+
+function cambioNivel(sel){
+  console.log("Cambio el select");
+  //console.log(sel.options[sel.selectedIndex].text);
 }
 
 
