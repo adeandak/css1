@@ -105,7 +105,6 @@ function llenarNiveles(select, array){
     option.text =array[i];
     select.add(option,select[a.length]);
   }
-
 }
 
 function cambioNivel(sel){
@@ -113,4 +112,9 @@ function cambioNivel(sel){
   //console.log(sel.options[sel.selectedIndex].text);
 }
 
+function aceptar(){
+  //crear un div 
+  var myDiv = document.createElement("div");
+  
+}
 
