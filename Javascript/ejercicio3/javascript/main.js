@@ -5,6 +5,7 @@ var data;
 var arrayIdiomas = []
 var costo=0;
 var niveles=[];
+var ban=false;
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', 'https://apiidiomas.firebaseapp.com/idiomas.json', true);
 
@@ -39,6 +40,11 @@ request.onload = function () {
 request.send();
 
 function myFunction() {
+  /*if(ban){
+    document.getElementsByClassName("aux")[0].removeChild(document.getElementById("aceptar"));
+    ban=false;
+  }
+  */
   var selIdioma = document.getElementById("idiomas");
   var txt= selIdioma.options[selIdioma.selectedIndex].text;
 
@@ -48,7 +54,7 @@ function myFunction() {
 
 function crearDiv(txt){
   var desc, tot;
-  console.log(txt);
+  //console.log(txt);
 
   //console.log(arrayIdiomas);
   var idioma= arrayIdiomas.find(obj => obj.idioma == txt);
@@ -65,13 +71,12 @@ function crearDiv(txt){
   var sel = document.createElement("select");
   sel.id=txt;
   llenarNiveles(sel, idioma.niveles);
-  sel.setAttribute("onchange", cambioNivel.bind(this, sel));
+  sel.onchange= cambioNivel.bind(this, txt);
 
   //console.log(sel.id);
 
   //generar id
   var uniqueId = 'id-' + Math.random().toString(36).substr(2, 16)+txt;
-  var id= document.createTextNode(uniqueId);
 
   myDiv.appendChild(sel);
   
@@ -90,9 +95,10 @@ function crearDiv(txt){
   costo+= tot;
   //console.log(costo);
   niveles.push({
-    idioma: txt,
-    total: tot,
-    nivel: sel.options[sel.selectedIndex].text
+    nombre: txt,
+    total: tot+'',
+    nivel: sel.options[sel.selectedIndex].text,
+    id: uniqueId
   });
   //console.log(niveles);
 }  
@@ -107,14 +113,47 @@ function llenarNiveles(select, array){
   }
 }
 
-function cambioNivel(sel){
-  console.log("Cambio el select");
-  //console.log(sel.options[sel.selectedIndex].text);
-}
 
 function aceptar(){
   //crear un div 
   var myDiv = document.createElement("div");
+
+  var tx="";
+  for(i=0; i<niveles.length; i++){
+    var nom= document.createElement("p");
+    var tot= document.createElement("p");
+    var nivel= document.createElement("p");
+    nom.appendChild(document.createTextNode("Idioma: "+ niveles[i].nombre));
+    tot.appendChild(document.createTextNode("Total: "+ niveles[i].total));
+    nivel.appendChild(document.createTextNode(node= "Nivel: "+niveles[i].nivel));
+    console.log(niveles[i]);
+
+    myDiv.appendChild(nom);
+    myDiv.appendChild(tot);
+    myDiv.appendChild(nivel);
+    myDiv.appendChild(document.createElement("br"));
+    console.log(niveles[i].id);
+    console.log(typeof(document.getElementById(niveles[i].id)))
+    document.getElementsByClassName("aux")[0].removeChild(document.getElementById(niveles[i].id));
+  }
+  var tot= document.createElement("p");
+  tot.appendChild(document.createTextNode("Precio total de todos los cursos:  $"+ Math.floor(costo * 100) / 100));
+  costo=0;
+  myDiv.appendChild(tot);
+  myDiv.style.width="90%";
+  myDiv.id="aceptar";
+  ban=true;
+  document.getElementsByClassName("aux")[0].appendChild(myDiv); 
+  console.log(tx);
   
+}
+
+function cambioNivel(id){
+  var selNivel= document.getElementById(id);
+  var nivel= selNivel.options[selNivel.selectedIndex].text;
+  console.log(nivel);
+  i= niveles.findIndex(x => x.nombre ===id);
+  console.log(niveles[i].nivel);
+  niveles[i].nivel=nivel;
 }
 
